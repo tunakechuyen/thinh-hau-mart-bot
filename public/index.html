@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Thinh Hau Mart</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Quản lý sản phẩm</h1>
+            <button id="logoutBtn" class="btn btn-danger">Đăng xuất</button>
+        </header>
+
+        <div style="margin-bottom: 1.5rem; display: flex; gap: 1rem;">
+            <input type="text" id="searchInput" class="form-control" placeholder="Tìm kiếm sản phẩm..."
+                style="max-width: 300px;">
+        </div>
+
+        <div id="productList" class="product-grid">
+            <!-- Products will be loaded here -->
+            <div class="text-center w-full" style="grid-column: 1/-1;">Loading...</div>
+        </div>
+    </div>
+
+    <button id="addBtn" class="fab">+</button>
+
+    <!-- Modal -->
+    <div id="productModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Thêm sản phẩm</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <form id="productForm">
+                <input type="hidden" id="productId">
+                <div class="form-group">
+                    <label>Tên <span style="color: red;">*</span></label>
+                    <input type="text" id="name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>Giá (VND) <span style="color: red;">*</span></label>
+                    <input type="text" id="price" class="form-control" required placeholder="0">
+                </div>
+                <div class="form-group">
+                    <label>Loại sản phẩm (Tùy chọn)</label>
+                    <input type="text" id="category" class="form-control"
+                        placeholder="vd: bia, nước ngọt, bánh, kẹo,...">
+                </div>
+                <div class="form-group">
+                    <label>Đơn vị (Tùy chọn - nên có)</label>
+                    <input type="text" id="unit" class="form-control" list="unit-options"
+                        placeholder="vd: hộp, gói, cái, kg">
+                    <datalist id="unit-options">
+                        <option value="Hộp">
+                        <option value="Gói">
+                        <option value="Cái">
+                        <option value="Kg">
+                        <option value="Chai">
+                        <option value="Lon">
+                        <option value="Thùng">
+                        <option value="Lốc">
+                        <option value="Vỉ">
+                        <option value="Bao">
+                        <option value="Túi">
+                    </datalist>
+                </div>
+                <div class="form-group">
+                    <label>Từ khóa (Tách bằng dấu phẩy - nên có)</label>
+                    <input type="text" id="keywords" class="form-control"
+                        placeholder="vd: bánh đậu xanh, kẹo dẻo, bia, rượu,...">
+                </div>
+                <div class="form-group" style="display: flex; align-items: center; gap: 0.5rem;">
+                    <input type="checkbox" id="isActive" checked>
+                    <label for="isActive" style="margin: 0;">Hiển thị</label>
+                </div>
+                <div class="mt-4 flex gap-2" style="justify-content: flex-end;">
+                    <button type="button" class="btn btn-danger hidden" id="deleteBtn">Xóa</button>
+                    <div style="flex: 1;"></div>
+                    <button type="button" class="close-modal btn" style="background: #e5e7eb;">Hủy</button>
+                    <button type="submit" class="btn btn-primary">Lưu sản phẩm</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
