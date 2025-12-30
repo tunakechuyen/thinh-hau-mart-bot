@@ -1,5 +1,6 @@
 :root {
-    --primary-color: #6366f1; /* Indigo 500 */
+    --primary-color: #6366f1;
+    /* Indigo 500 */
     --primary-hover: #4f46e5;
     --bg-color: #f3f4f6;
     --card-bg: #ffffff;
@@ -127,7 +128,8 @@ button {
     border-radius: 8px;
     font-size: 1rem;
     outline: none;
-    box-sizing: border-box; /* Important for padding */
+    box-sizing: border-box;
+    /* Important for padding */
     transition: border-color 0.2s;
 }
 
@@ -253,12 +255,29 @@ button {
 }
 
 /* Utilities */
-.hidden { display: none !important; }
-.flex { display: flex; }
-.gap-2 { gap: 0.5rem; }
-.mt-4 { margin-top: 1rem; }
-.w-full { width: 100%; }
-.text-center { text-align: center; }
+.hidden {
+    display: none !important;
+}
+
+.flex {
+    display: flex;
+}
+
+.gap-2 {
+    gap: 0.5rem;
+}
+
+.mt-4 {
+    margin-top: 1rem;
+}
+
+.w-full {
+    width: 100%;
+}
+
+.text-center {
+    text-align: center;
+}
 
 /* Fab Button for Mobile */
 .fab {
@@ -281,7 +300,43 @@ button {
 }
 
 @media (max-width: 640px) {
-    .container { padding: 16px; }
-    h1 { font-size: 1.5rem; }
-    .product-grid { grid-template-columns: 1fr; }
+    .container {
+        padding: 16px;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Sticky Search */
+.search-container {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    background-color: var(--bg-color);
+    padding: 1rem 0;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    /* Negative margin to stretch full width over container padding */
+    margin-left: -20px;
+    margin-right: -20px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+/* Ensure Search Input is full width on mobile or limited on desktop */
+#searchInput {
+    width: 100%;
+    max-width: 100%;
+}
+
+@media (min-width: 640px) {
+    #searchInput {
+        max-width: 400px;
+    }
 }
