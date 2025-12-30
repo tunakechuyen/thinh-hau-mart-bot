@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Thinh Hau Mart</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="login-wrapper">
+        <div class="card login-card">
+            <h1 class="text-center" style="margin-bottom: 2rem;">Thịnh Hậu Mart</h1>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label>Mật khẩu</label>
+                    <input type="password" id="password" class="form-control" placeholder="Nhập mật khẩu" required>
+                </div>
+                <button type="submit" class="btn btn-primary w-full">Đăng nhập</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const password = document.getElementById('password').value;
+
+            try {
+                const res = await fetch('/api/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ password })
+                });
+
+                if (res.ok) {
+                    localStorage.setItem('admin_password', password);
+                    window.location.href = '/';
+                } else {
+                    alert('Mật khẩu không chính xác');
+                }
+            } catch (err) {
+                alert('Lỗi khi đăng nhập');
+            }
+        });
+    </script>
+</body>
+
+</html>
